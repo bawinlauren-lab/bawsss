@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>A Little Secret for You</title>
+  <style>
+    body, html {
+      margin: 0; padding: 0; height: 100%;
+      font-family: 'Cormorant Garamond', serif;
+      background-color: black;
+      color: white;
+      overflow-x: hidden;
+    }
+    #landing {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: black;
+      background-size: cover;
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+    }
+    #landing h1 {
+      font-size: 3em;
+      margin-bottom: 40px;
+      color: #ff00ff;
+      text-shadow: 0 0 10px #ff00ff;
+    }
+    #enter-btn {
+      font-size: 1.5em;
+      padding: 20px 40px;
+      border: none;
+      border-radius: 15px;
+      background-color: #ff00ff;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    #enter-btn:hover {
+      background-color: #00ffff;
+      color: black;
+    }
+    #main-content {
+      display: none;
+      max-width: 800px;
+      margin: 40px auto;
+      background: rgba(0,0,0,0.7);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #ff00ff;
+      text-align: center;
+      position: relative;
+      color: white;
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+    #confession {
+      margin-bottom: 20px;
+    }
+    #more-btn, .btn-yes, .btn-no {
+      margin-top: 20px;
+      padding: 15px 30px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    #more-btn {
+      background-color: #00ffff;
+      color: black;
+    }
+    #more-btn:hover {
+      background-color: #ff00ff;
+      color: white;
+    }
+    .btn-yes {
+      background-color: #00ff99;
+      color: black;
+      margin-right: 20px;
+      position: relative;
+    }
+    .btn-no {
+      background-color: #ff3333;
+      color: white;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Landing page -->
+  <div id="landing">
+    <h1>Hiiiiiiiiii</h1>
+    <button id="enter-btn">Click</button>
+  </div>
+
+  <!-- Main content -->
+  <div id="main-content">
+    <div id="confession">
+      <p>
+        Hi, baby! I just want you to know, I already have so many memories na agad with you kahit online lang tayo nagkakilala. And I really treasure each chat and moment we’ve shared.
+        You deserve to be cherished, respected, and loved beyond measure. If you let me, I’d be super honored to be there for you, supporting you through life’s joys and challenges even if it’s just virtually for now.
+        My feelings for you are always genuine and real. I’ll listen to you, understand you, and be patient with your pace.
+        No matter how long it takes, I’ll be here, hoping that one day, you’ll let me in completely.
+        You’re worth every effort, every moment of patience, and every sincere gesture I can give.
+        I just hope I can make you feel as special as you really are to me.
+      </p>
+    </div>
+
+    <button id="more-btn">More</button>
+
+    <div id="more-text" style="display:none;">
+      <p>
+        I want to ask for your permission to court you. Even if you weren’t ready for a relationship when we first met, I’m here willing to wait and prove myself.
+        I’ll keep loving you, chasing you, and supporting your dreams until the day we’re finally together. Just let me court you until your heart is ready to say yes.
+      </p>
+    </div>
+
+    <div id="courtship" style="display:none;">
+      <h2>Can I court you?</h2>
+      <button class="btn-yes" id="yesBtn">Yes</button>
+      <button class="btn-no" id="noBtn">No</button>
+    </div>
+  </div>
+
+  <script>
+    const enterBtn = document.getElementById('enter-btn');
+    const landing = document.getElementById('landing');
+    const mainContent = document.getElementById('main-content');
+
+    const moreBtn = document.getElementById('more-btn');
+    const moreText = document.getElementById('more-text');
+    const courtship = document.getElementById('courtship');
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+
+    // Show main content
+    enterBtn.addEventListener('click', () => {
+      landing.style.display = 'none';
+      mainContent.style.display = 'block';
+    });
+
+    // Show more text and courtship
+    moreBtn.addEventListener('click', () => {
+      moreText.style.display = 'block';
+      courtship.style.display = 'block';
+      moreBtn.style.display = 'none';
+    });
+
+    // Yes button
+    yesBtn.addEventListener('click', () => {
+      alert("Wala kang choice bes ❤️");
+    });
+
+    // Movable No button
+    noBtn.addEventListener('mouseenter', () => {
+      const containerRect = mainContent.getBoundingClientRect();
+      const maxTop = containerRect.height - noBtn.offsetHeight;
+      const maxLeft = containerRect.width - noBtn.offsetWidth;
+
+      const randomTop = Math.floor(Math.random() * maxTop);
+      const randomLeft = Math.floor(Math.random() * maxLeft);
+
+      noBtn.style.position = 'absolute';
+      noBtn.style.top = randomTop + 'px';
+      noBtn.style.left = randomLeft + 'px';
+    });
+  </script>
+
+</body>
+</html>
